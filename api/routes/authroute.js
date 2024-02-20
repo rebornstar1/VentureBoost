@@ -3,6 +3,6 @@ import Auth from "../controllers/authcontroller.js"
 
 const router = express();
 
-router.get('/auth',Auth);
+router.post('/safeauth',Auth);
 
 export default router;
