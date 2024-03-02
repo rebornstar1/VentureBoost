@@ -5,6 +5,8 @@ import Profile from './pages/Profile'
 import Signin from './pages/Signin'
 import Signout from './pages/Signout'
 import Header from './Components/Header'
+import Footer from './Components/Footer'
+import Models from './pages/models'
 
 function App() {
   return (
@@ -13,11 +15,12 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/models' element={<Models/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/signin' element={<Signin/>}/>
       <Route path='/signout' element={<Signout/>}/>
     </Routes>
-
+    <Footer/>
     </BrowserRouter>
   )
 }
