@@ -31,7 +31,7 @@ const Footer = () => {
     <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20'>
       {/* Left section with brand and social icons */}
       <div>
-        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-purple-900'>Sifra AI</h1>
+        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-purple-800'>Sifra AI</h1>
         <p className='py-4'>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero reiciendis, blanditiis accusantium.
         </p>

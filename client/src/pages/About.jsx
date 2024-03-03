@@ -1,8 +1,9 @@
+import yutv from "../assets/Virtualimage.gif"
 
 function About() {
   return (
     <div>
-      This is about page
+      <img src={yutv} alt="dbjscbdsjkc"></img>
     </div>
   )
 }
