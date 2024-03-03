@@ -4,7 +4,7 @@ import Question from "../Components/question";
 
 function Home() {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-gray-900 font-montserrat">
      
       <div className="flex flex-row justify-center pt-6 md:pt-20 pb-6 md:pb-20">
           {/*<img className="hidden sm:inline w-1/6 m-2 md:m-6 justify-center rounded-3xl items-center" src={sypt} alt="This is the landing Page"/>*/}
