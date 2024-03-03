@@ -22,9 +22,6 @@ function Home() {
       <Features textin={"Unlike human companions who may have limited availability due to their own schedules and commitments, an AI companion is available 24/7."} texttit={"24/7 Availability:"}/>
       <Features textin={"An AI companion offers a non-judgmental presence, providing a safe space for you to express yourself without fear of criticism or scrutiny."} texttit={"Non-judgmental Support:"}/>      </div>
       </div>
-      <div className="flex justify-center items-center">
-      <Question/>
-      </div>
     </div>
   )
 }

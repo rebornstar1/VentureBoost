@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-gray-900 shadow-md p-3 md:p-5 font-montserrat">
         <div className="flex justify-between items-center  mx-auto">
         <h1 className="font-bold text-3xl md:text-5xl flex flex-wrap">
-            <span className="text-purple-700  p-1 md:p-2 font-montserrat">Siphra AI</span>
+            <span className="text-purple-700  p-1 md:p-2 font-montserrat">Sifra AI</span>
         </h1>
   
         <div className='flex justify-around gap-5 md:gap-12'>
