@@ -1,11 +1,9 @@
-import gype from "../assets/image.png"
-
 export default function Cards(props) {
   return (
 <div>
     <div className="max-w-sm hover:max-w-md bg-white border border-pink-200 rounded-lg shadow dark:bg-purple-800 dark:border-purple-900 font-montserrat">
         <a href="#">
-            <img className="rounded-t-lg" src={gype} alt="" />
+            <img className="rounded-t-lg" src={""} alt="" />
         </a>
         <div className="p-5">
             <a href="#">

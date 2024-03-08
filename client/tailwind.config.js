@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'montserrat': ['Montserrat', 'sans-serif'],
+        'montserrat': ['Montserrat','sans-serif'],
+      },
+      backgroundImage: {
+        'hero': "url('../assets/react.svg')",
       },
     },
   },

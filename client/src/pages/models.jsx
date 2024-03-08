@@ -1,4 +1,3 @@
-import Cards from "../Components/cards"
 import Advcards from "../Components/advcards"
 
 function Models() {

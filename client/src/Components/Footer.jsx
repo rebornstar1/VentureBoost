@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FaDribbbleSquare,
   FaFacebookSquare,
@@ -8,7 +7,7 @@ import {
 } from 'react-icons/fa';
 // Reusable SocialIcon component with hover effect
 const SocialIcon = ({ icon: Icon }) => (
-  <Icon className="social-icon hover:text-[#00df9a]" size={30} />
+  <Icon className="social-icon hover:text-blue-300" size={30} />
 );
 // Footer component
 const Footer = () => {
@@ -31,9 +30,9 @@ const Footer = () => {
     <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20'>
       {/* Left section with brand and social icons */}
       <div>
-        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-purple-800'>Sifra AI</h1>
+        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-900'>Ideafest</h1>
         <p className='py-4'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero reiciendis, blanditiis accusantium.
+        Spark connections and ignite innovation with our business idea sharing app, where entrepreneurs collide in a digital marketplace of creativity and collaboration.
         </p>
         <div className='flex justify-between md:w-[75%] my-6'>
           {/* Mapping over social icons and rendering the SocialIcon component */}

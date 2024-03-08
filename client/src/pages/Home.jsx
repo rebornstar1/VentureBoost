@@ -1,35 +1,13 @@
-import Features from "./../Components/features"
-import Question from "../Components/question";
-import yutv from "../assets/Virtualimage.gif"
-
+import Hero from "../Components/Hero";
+import Wwedo from "../Components/Wwedo";
+import Testimonials from "../Components/Testimonials";
 
 function Home() {
   return (
     <div className="bg-gray-900 font-montserrat">
-     
-     <div className="flex flex-row justify-center items-center">
-        <div className="w-1/3 flex justify-center items-center rounded-3xl">
-        <img className="border-purple-900 rounded-3xl p-5 md:p-10" src={yutv} alt="dbjscbdsjkc"></img>
-        </div>
-    <div className="w-2/3">
-        <div className="flex flex-row justify-center pt-6 md:pt-20 pb-6 md:pb-20">
-              {/*<img className="hidden sm:inline w-1/6 m-2 md:m-6 justify-center rounded-3xl items-center" src={sypt} alt="This is the landing Page"/>*/}
-              <div className="w-3/4 flex flex-col justify-center items-center">   
-                    <div className="m-4 md:m-8 text-sm md:text-3xl text-center text-white">Experience the future of companionship with your <span className="block font-semibold text-4xl md:text-5xl text-purple-500 mt-4 mb-8">Personalized Virtual Companion</span> <span className="text-right">{"Your Perfect Partner in the Digital Age: Virtual Companion"}</span></div>
-                    <div className="w-3/4 flex justify-center text-center">
-                        <div className="hidden sm:inline text-2xl text-white justify-center items-center max-w-1/2 mt-12">Revolutionizing companionship for introverted individuals, our AI startup offers a virtual companion tailored to their unique needs.</div>
-                    </div>
-              </div>   
-          </div>
-    </div>
-    </div>
-      <div className="mx-auto justify-center w-5/6 pt-5 md:pt-15">
-      <div className="flex flex-wrap bg-gray-900 text-purple-500 font-semibold font-poppins text-2xl md:text-5xl text-center w-max">Why an Virtual Companion?</div>
-      <div className="flex flex-wrap justify-between h-max">
-      <Features textin={"An AI companion can provide personalized assistance tailored to your needs and preferences. lorel ipsum lorel ipsum lorel ipsum lorel ipsum"} texttit={"Personalized Assistance:"}/>
-      <Features textin={"Unlike human companions who may have limited availability due to their own schedules and commitments, an AI companion is available 24/7."} texttit={"24/7 Availability:"}/>
-      <Features textin={"An AI companion offers a non-judgmental presence, providing a safe space for you to express yourself without fear of criticism or scrutiny."} texttit={"Non-judgmental Support:"}/>      </div>
-      </div>
+      <Hero/>
+      <Wwedo/>
+      <Testimonials/>
     </div>
   )
 }
