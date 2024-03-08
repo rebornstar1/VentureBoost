@@ -10,10 +10,6 @@ export default function Header() {
             <img className="max-w-20 md:max-w-36" src={Logo} alt="This is logo"></img>
         </h1>
         <div className='flex justify-around gap-3 md:gap-6 p-5 md:p-8'>
-        <form className="bg-slate-100 rounded-lg flex items-center">
-            <input className="bg-transparent focus:outline-none w-24 sm:w-64 p-1.5" type="text" placeholder="Search..."></input>
-            <FaSearch className="text-blue-600"/>
-        </form>
         <ul className='flex flex-row justify-between gap-8'>
           <li className='hidden sm:inline text-white hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/'>Home</Link></li>
           <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/models'>Ideas</Link></li>

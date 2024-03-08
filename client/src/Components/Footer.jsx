@@ -27,10 +27,10 @@ const Footer = () => {
   ];
   // JSX structure of the footer
   return (
-    <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20'>
+    <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20 font-montserrat'>
       {/* Left section with brand and social icons */}
       <div>
-        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-900'>Ideafest</h1>
+        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-400'>Ideafest</h1>
         <p className='py-4'>
         Spark connections and ignite innovation with our business idea sharing app, where entrepreneurs collide in a digital marketplace of creativity and collaboration.
         </p>

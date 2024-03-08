@@ -7,7 +7,6 @@ function Home() {
     <div className="bg-gray-900 font-montserrat">
       <Hero/>
       <Wwedo/>
-      <Testimonials/>
     </div>
   )
 }
