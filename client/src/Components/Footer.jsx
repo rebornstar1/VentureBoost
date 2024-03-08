@@ -27,7 +27,7 @@ const Footer = () => {
   ];
   // JSX structure of the footer
   return (
-    <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20 font-montserrat'>
+    <div className='bg-gray-800 mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20 font-montserrat'>
       {/* Left section with brand and social icons */}
       <div>
         <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-400'>Ideafest</h1>
