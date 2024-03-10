@@ -1,41 +1,48 @@
-import flip from "./../assets/image.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react";
 
 function Signin() {
-
-  function onSubmit(){
-   return (
-    <div>You will just return this</div>
-   )
-  }
+  
   return (
-    <div className="flex justify-center bg-gray-900 text-white border-none">
-        <div className="border-solid border-2 border-slate-20 p-3 sm:p-10 mt-6 sm:mt-12">
-              <div className="text-2xl sm:text-3xl mb-2 sm:mb-5 text-center">
-              Get Started with your Siphra Login !!!
-              </div>
-              <div className="flex justify-between p-6">
-                <form className="mx-auto">
-                  <label>Username</label>
-                  <input type="text" className="block text-gray-700 text-sm mb-2 sm:mb-4 mt-1 sm:mt-2 p-1 sm:p-2 border-2 border-slate-200 rounded-lg hover:border-slate-600 w-max" placeholder="Enter your username"></input>
-                  <label>Email ID</label>
-                  <input type="text" className="block text-gray-700 text-sm mb-2 sm:mb-4 mt-1 sm:mt-2 p-1 sm:p-2 border-2 border-slate-200 rounded-lg hover:border-slate-600" placeholder="Enter your email-id"></input>
-                  <label>Password</label>
-                  <input type="text" className="block text-gray-700 text-sm mb-2 sm:mb-4 mt-1 sm:mt-2 p-1 sm:p-2 border-2 border-slate-200 rounded-lg hover:border-slate-600" placeholder="Enter your password"></input>
-                  <button type="submit" className="bg-blue-200 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">Submit</button>
-                  
-                </form>
-                <img src={flip} alt="" className="hidden sm:inline w-5/12 border-slate-200 rounded-lg"/>
-              </div>
-              
-              <div className="flex justify-center">
-                Do you already have an account ? 
-              </div> 
-              <div>
-              </div>
+    <div className='flex flex-col bg-gradient-to-r pb-20 from-gray-900 to-gray-600 font-montserrat'>
+      <div className="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8">
+    <h2 className="mt-4 mb-2 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to your account</h2>
+
+  <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form className="space-y-6" action="#" method="POST">
+      <div>
+        <label className="block text-sm font-medium leading-6 text-white">Email address</label>
+        <div className="mt-2">
+          <input id="email" name="email" type="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"/>
         </div>
       </div>
+
+      <div>
+        <div className="flex items-center justify-between">
+          <label className="block text-sm font-medium leading-6 text-white">Password</label>
+        </div>
+        <div className="mt-2">
+          <input id="password" name="password" type="password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:gray-indigo-600 sm:text-sm sm:leading-6"></input>
+        </div>
+        <div className="text-sm p-2 md:p-3">
+            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" className="flex w-full justify-center rounded-md bg-gradient-to-r from-indigo-600 to-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+      </div>
+    </form>
+
+    <p className="mt-10 text-center text-sm text-gray-500">
+      New to Ideafest?
+      <a href="/Signup" className="font-semibold leading-6 text-indigo-700 hover:text-indigo-500"> Create New Account</a>
+    </p>
+  </div>
+</div>
+    </div>
   )
 }
 
 export default Signin
+

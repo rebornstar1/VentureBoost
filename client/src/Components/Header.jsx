@@ -11,11 +11,11 @@ export default function Header() {
         </h1>
         <div className='flex justify-around gap-3 md:gap-6 p-5 md:p-8'>
         <ul className='flex flex-row justify-between gap-8'>
-          <li className='hidden sm:inline text-white hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/'>Home</Link></li>
-          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/models'>Ideas</Link></li>
-          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/about'>About</Link></li>
-          <li className='inline text-white hover:hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/signin'>Sign In</Link></li>
-          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl p-3 tracking-widest'><Link to='/signin'>Pricing</Link></li> 
+          <li className='hidden sm:inline text-white hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/'>Home</Link></li>
+          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/models'>Ideas</Link></li>
+          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/about'>About</Link></li>
+          <li className='inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/signin'>Sign In</Link></li>
+          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/signin'>Pricing</Link></li> 
         </ul>
         </div>
         </div>

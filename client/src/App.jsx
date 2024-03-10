@@ -7,6 +7,7 @@ import Signout from './pages/Signout'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Models from './pages/models'
+import Signup from './pages/Signup'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/signin' element={<Signin/>}/>
       <Route path='/signout' element={<Signout/>}/>
+      <Route path='/signup' element={<Signup/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
