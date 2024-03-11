@@ -1,4 +1,3 @@
-import React from 'react'
 import safeimg from "../assets/image.png"
 
 function ThrCard() {

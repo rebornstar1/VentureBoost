@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signInStart,signInSuccess,signInFailure } from "../redux/userSlice.js";
+import OAuth from "../Components/OAuth.jsx";
 
 function Signin() {
 
@@ -76,7 +77,7 @@ function Signin() {
         <button type="submit" className="flex w-full justify-center rounded-md bg-gradient-to-r from-indigo-600 to-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
       </div>
     </form>
-
+    <OAuth/>
     <p className="mt-10 text-center text-sm text-gray-500">
       New to Ideafest?
       <a href="/Signup" className="font-semibold leading-6 text-indigo-700 hover:text-indigo-500"> Create New Account</a>

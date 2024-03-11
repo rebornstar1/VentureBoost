@@ -1,4 +1,3 @@
-import {FaSearch} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import Logo from '../assets/ll2-removebg-preview.png'
 
@@ -15,7 +14,7 @@ export default function Header() {
           <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/models'>Ideas</Link></li>
           <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/about'>About</Link></li>
           <li className='inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/signin'>Sign In</Link></li>
-          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/signin'>Pricing</Link></li> 
+          <li className='hidden sm:inline text-white hover:hover:text-blue-300 rounded-2xl m-3 tracking-widest'><Link to='/profile'>Profile</Link></li> 
         </ul>
         </div>
         </div>

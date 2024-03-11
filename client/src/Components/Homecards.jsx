@@ -1,5 +1,3 @@
-import safeimg from '../assets/image.png'
-
 function Homecards(props) {
   return (
     <div className="hover: border-solid prserve-3d">
