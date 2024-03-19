@@ -53,27 +53,27 @@ function Signup(){
       </div>
       {error?<p id='checkunique' className="text-red-800 font-semibold text-center">Username or Email ID Already Exists</p>:<p></p>}
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-3" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">Username</label>
             <div className="mt-2">
-              <input id="username" onChange={handleChange} name="username" type="text" autoComplete="text" className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+              <input id="username" onChange={handleChange} name="username" type="text" autoComplete="text" placeholder="Username" className="bg-gray-800 block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
             </div>
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email address</label>
             <div className="mt-2">
-              <input id="email" onChange={handleChange} name="email" type="email" autoComplete="email" required className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+              <input id="email" onChange={handleChange} name="email" type="email" autoComplete="email" required placeholder="Email" className="bg-gray-800 block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
             </div>
           </div>
     
-          <div>
+          <div className="pb-4"> 
             <div className="flex items-center justify-between">
               <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Password</label>
             </div>
             <div className="mt-2">
-              <input id="password" onChange={handleChange} name="password" type="password" autoComplete="current-password" required className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+              <input id="password" onChange={handleChange} name="password" type="password" autoComplete="current-password" placeholder="Password" required className="bg-gray-800 block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
             </div>
           </div>
     

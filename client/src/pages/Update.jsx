@@ -1,0 +1,61 @@
+import { useSelector } from "react-redux"
+import { useState } from "react";
+
+function Update() {
+  const {currentUser} = useSelector(state => state.user)
+  const [formData,setformData] = useState({});
+  const {loading,error} = useSelector((state) => state.user);
+  const handleSubmit = async() => {
+    return(
+      <div>shxojns</div>
+    )
+  }
+  const handleChange = async() => {
+    return(
+      <div>cbhdkjd</div>
+    )
+  }
+  return (
+    <div className="flex min-h-full bg-gradient-to-r from-gray-900 to-gray-600 flex-col justify-center px-3 py-6 lg:px-8 font-montserrat">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Update Profile</h2>
+      </div>
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">Username</label>
+            <div className="mt-2">
+              <input id="username" onChange={handleChange} name="username" type="text" autoComplete="text" className="block w-full rounded-md border-0 py-1.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder={currentUser.username}></input>
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email address</label>
+            <div className="mt-2">
+              <input id="email" onChange={handleChange} name="email" type="email" autoComplete="email" required placeholder={currentUser.email} className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+            </div>
+          </div>
+    
+          <div>
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Password</label>
+            </div>
+            <div className="mt-2">
+              <input id="password" onChange={handleChange} name="password" type="password" autoComplete="current-password" required className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+            </div>
+          </div>
+    
+          <div>
+            <button disabled={loading} type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{loading?`Loading`:`Update`}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default Update
+
+{/*
+This is for the Update Profile Page Respectively
+*/}
