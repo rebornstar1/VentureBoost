@@ -2,19 +2,90 @@ import { useSelector } from "react-redux"
 import { useEffect, useRef, useState } from "react"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { app } from "../firebase"
+import { useNavigate } from "react-router-dom"
 
 function Profile() {
   const {currentUser} = useSelector((state) => state.user)
   const FileRef = useRef(null)
+  const navigate = useNavigate();
   const [file,setfile] = useState(undefined);
   const [fileperc,setfileperc] = useState(0);
   const [errorfileUp,seterrorfileUp] = useState(false);
   const [formData,setformData] = useState({});
+  const [updaterror,setupdaterror] = useState(false);
+  const [deleterrormsg,setdeleterrormsg] = useState(null);
   // Firebase Storage Rules 
   // allow read;
   // allow write: if 
   // request.resource.size < 2*1024*1024 && 
   // request.resource.contentType.matches('image/.*')
+
+  const handleChange = async(e) => {
+       e.preventDefault();
+       try{
+          setformData(
+            {
+              ...formData, [e.target.id] : e.target.value
+            },
+            console.log(formData)
+          )
+       } catch(error)
+       {
+        console.log(error);
+       }
+  }
+
+  const DeleteUser = async(e) => {
+    e.preventDefault();
+    const UserDetails = {email:currentUser.email, username:currentUser.username, password:formData.password};
+    try{
+      const res = await fetch('/api/auth/deleteuser',
+      {
+        method: 'DELETE',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(UserDetails)
+      })
+
+      const data = await res.json();
+      if(data.success === false){
+        setdeleterrormsg(data.message);
+      } else{
+       // Navigate()
+        navigate('/signup')
+        setdeleterrormsg("User Deleted Successfully");
+      }
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+  const UpdateUser = async(e) => {
+     e.preventDefault();
+     try{
+        const res = await fetch('/api/auth/updateuser',
+        {
+        method: 'PUT',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(formData)
+        })
+
+        const data = await res.json();
+        if(data.success === false){
+          setupdaterror(true);
+        } else{
+          setupdaterror(false);
+        }
+        //console.log(data);
+     } catch(error)
+     {
+       console.log("Unable to Update the user")
+     }
+  }
+
 
   console.log(formData);
 
@@ -53,7 +124,7 @@ function Profile() {
 
   return(
 
-    <div className="bg-gradient-to-r from-gray-900 to-gray-600">
+    <div className="bg-gradient-to-r from-gray-900 to-gray-600 p-20">
       <div className="font-montserrat text-white max-w-md mx-auto">
         <h1 className="text-4xl font-semibold text-center">Profile</h1>
         <form className="flex flex-col gap-4 p-2">
@@ -61,6 +132,7 @@ function Profile() {
           <img src={formData.avatar || currentUser.avatar} 
           onClick={()=>FileRef.current.click()} alt="profile" className="self-center rounded-full h-24 w-24 object-cover cursor-pointer mt-5"></img>
         
+          {updaterror?<div className="text-center text-red-500">Wrong User Credentials</div>:<p></p>}
           {fileperc > 0 && fileperc < 100 && (
         <div className="mt-4">
           <div className="bg-gray-200 w-full h-2 rounded-full">
@@ -75,13 +147,14 @@ function Profile() {
         </div>
       )}
       {errorfileUp?<div className="text-center text-red-500">Error Occurred</div>:(fileperc===100 && <div className="text-center text-green-500">Image Uploaded Successfully</div>)}
-          <input type="text" id="username" placeholder="Username" className="bg-gray-800 border p-2 rounded-lg "></input>
-          <input type="email" id="email" placeholder="Email" className="bg-gray-800 border p-2 rounded-lg"></input>
-          <input type="text" id="password" placeholder="Password" className="bg-gray-800 border p-2 rounded-lg"></input>
-          <button className="bg-green-600 opacity-90 hover:opacity-100 p-2 drop-shadow-md rounded-lg font-semibold">Update</button>
+          <input type="text" id="username" defaultValue={currentUser.username} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg "></input>
+          <input type="email" id="email" defaultValue={currentUser.email} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg"></input>
+          <input type="text" name="password" id="password" placeholder="Password" onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg"></input>
+          <button className="bg-green-600 opacity-90 hover:opacity-100 p-2 drop-shadow-md rounded-lg font-semibold" onClick={UpdateUser}>Update</button>
         </form>
+        {(deleterrormsg==="User Deleted Successfully")?<div className="text-red-600 text-center">{"User Deleted Successfully"}</div>:<p>{deleterrormsg}</p>}
         <div className="flex flex-row justify-between p-3">
-          <div className="text-red-600 hover:text-red-500 font-medium">Delete Account</div>
+          <div className="text-red-600 hover:text-red-500 font-medium" onClick={DeleteUser}>Delete Account</div>
           <div className="text-yellow-600 hover:text-yellow-500 font-medium">Sign Out</div>
         </div>
       </div>
