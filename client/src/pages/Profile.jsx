@@ -3,9 +3,24 @@ import { useEffect, useRef, useState } from "react"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { app } from "../firebase"
 import { useNavigate } from "react-router-dom"
+import {
+  deleteUserStart,
+  deleteUserFailure,
+  deleteUserSuccess,
+  updateUserStart,
+  updateUserFailure,
+  updateUserSuccess,
+  signOutFailure,
+  signOutStart,
+  signOutSuccess
+} from "../redux/userSlice.js";
+import { useDispatch } from "react-redux"
 
 function Profile() {
+  const Dispatch = useDispatch();
   const {currentUser} = useSelector((state) => state.user)
+  const [Uze,setUze] = useState(currentUser.username);
+  const [imil,setimil] = useState(currentUser.email);
   const FileRef = useRef(null)
   const navigate = useNavigate();
   const [file,setfile] = useState(undefined);
@@ -35,11 +50,37 @@ function Profile() {
        }
   }
 
+  const SignOut = async(e) => {
+    e.preventDefault();
+    try{
+      Dispatch(signOutStart());
+      const res = await fetch('/api/user/signout',
+      {
+        method: 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(formData)
+      })
+      const data = await res.json();
+      if(data.success === false){
+        Dispatch(signOutFailure());
+      } else{
+        Dispatch(signOutSuccess());
+      }
+
+    } catch(error){
+      console.log(error);
+    }
+  }
+
   const DeleteUser = async(e) => {
     e.preventDefault();
-    const UserDetails = {email:currentUser.email, username:currentUser.username, password:formData.password};
+    const UserDetails = {username:currentUser.username,email:currentUser.email, password:formData.password};
+    console.log("This is the "+ JSON.stringify(UserDetails));
     try{
-      const res = await fetch('/api/auth/deleteuser',
+      Dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/deleteuser`,
       {
         method: 'DELETE',
         headers : {
@@ -50,9 +91,11 @@ function Profile() {
 
       const data = await res.json();
       if(data.success === false){
+        Dispatch(deleteUserFailure())
         setdeleterrormsg(data.message);
       } else{
        // Navigate()
+        Dispatch(deleteUserSuccess())
         navigate('/signup')
         setdeleterrormsg("User Deleted Successfully");
       }
@@ -63,31 +106,35 @@ function Profile() {
 
   const UpdateUser = async(e) => {
      e.preventDefault();
+     const UserDetails = {username:formData.username||currentUser.username,email:formData.email||currentUser.email,...formData}
      try{
-        const res = await fetch('/api/auth/updateuser',
+      Dispatch(updateUserStart());
+        const res = await fetch('/api/user/updateuser',
         {
         method: 'PUT',
         headers : {
           'Content-Type' : 'application/json'
         },
-        body : JSON.stringify(formData)
+        body : JSON.stringify(UserDetails)
         })
 
         const data = await res.json();
         if(data.success === false){
+          Dispatch(updateUserFailure());
           setupdaterror(true);
         } else{
+          Dispatch(updateUserSuccess());
           setupdaterror(false);
         }
         //console.log(data);
      } catch(error)
      {
-       console.log("Unable to Update the user")
+       console.log(error)
      }
   }
 
 
-  console.log(formData);
+  //console.log(formData);
 
   useEffect(()=> {
     if(file)
@@ -147,15 +194,15 @@ function Profile() {
         </div>
       )}
       {errorfileUp?<div className="text-center text-red-500">Error Occurred</div>:(fileperc===100 && <div className="text-center text-green-500">Image Uploaded Successfully</div>)}
-          <input type="text" id="username" defaultValue={currentUser.username} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg "></input>
-          <input type="email" id="email" defaultValue={currentUser.email} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg"></input>
+          <input type="text" id="username" defaultValue={Uze} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg "></input>
+          <input type="email" id="email" defaultValue={imil} onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg"></input>
           <input type="text" name="password" id="password" placeholder="Password" onChange={handleChange} className="bg-gray-800 border p-2 rounded-lg"></input>
           <button className="bg-green-600 opacity-90 hover:opacity-100 p-2 drop-shadow-md rounded-lg font-semibold" onClick={UpdateUser}>Update</button>
         </form>
         {(deleterrormsg==="User Deleted Successfully")?<div className="text-red-600 text-center">{"User Deleted Successfully"}</div>:<p>{deleterrormsg}</p>}
         <div className="flex flex-row justify-between p-3">
           <div className="text-red-600 hover:text-red-500 font-medium" onClick={DeleteUser}>Delete Account</div>
-          <div className="text-yellow-600 hover:text-yellow-500 font-medium">Sign Out</div>
+          <div className="text-yellow-600 hover:text-yellow-500 font-medium" onClick={SignOut}>Sign Out</div>
         </div>
       </div>
    </div>

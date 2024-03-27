@@ -3,6 +3,7 @@ import bcryptjs from 'bcryptjs'
 import maerr from '../utils/error.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import e from 'express'
 
 export const Signup = async (req,res,next) => {
 
@@ -49,6 +50,7 @@ export const Signout = async(req,res,next) =>{
 export const Authgoogle = async (req,res,next) =>{
     try{
       const user = await User.findOne({email : req.body.email})
+      console.log(req.body);
       if(user){
         // Register the User
         const token = jwt.sign({id:user._id }, process.env.JWT_SECRET)
@@ -94,7 +96,8 @@ export const Updateuser = async(req,res,next) => {
       }
       console.log(result);
       if(result){
-        await User.updateOne({_id:user.id},{username : req.body.username, email : req.body.email, password : prevpassword, avatar : req.body.avatar});
+        console.log("User Updated Successfully");
+        await User.findByIdAndUpdate(user.id,{username : req.body.username, email : req.body.email, password : prevpassword, avatar : req.body.avatar},{new:true});
         return res.status(201).json("User Updated Successfully!");
       } else{
         return next(maerr(401,'Wrong Credentials'));
@@ -103,29 +106,6 @@ export const Updateuser = async(req,res,next) => {
     })
 
 
-    // bcryptjs.compare(req.body.password,prevpassword,function(err,result){
-    //   if(err){
-    //     console.log("Password Matching Error");
-    //     return;
-    //   }
-
-    //   if(!result){
-    //     User.updateOne({_id:user.id},{username : req.body.username, email : req.body.email, password : validPassword, avatar : req.body.avatar});
-    //   } else{
-    //     console.log("Wrong Password");
-    //   }
-
-    // })
- 
-    /* Here we need to check how we can add password checking before adding the password into this */
-
-    //console.log(user);
-    //user.updateOne({email : req.body.email, username : req.body.username, password : req.body.password})
-    //console.log(user.username)
-    // console.log(user.email)
-    // if(req.body.password === user.password){
-    //    user.updateOne({email : user.email, username : newusername, password : user.password})
-    // }
   } 
   catch(error)
   {
@@ -133,28 +113,41 @@ export const Updateuser = async(req,res,next) => {
   }
 }
 
+export const SignOutUser = async(req,res,next) => {
+  try{
+    res.clearCookie('access_token');
+    return res.status(201).json("User Logout Successfully!");
+  } catch(error){
+    console.log(error);
+  }
+}
+
 export const Deleteuser =  async(req,res,next) => {
    try{
-      //console.log(req.body);
-      const passkey = req.body.password;
-      const user  = await User.findOne({email : req.body.email});
+      console.log(req.body);
+      const user = await User.findOne({email : req.body.email})
+      //console.log(user);
+      // bcrypt.compare(passkey,user.password,async function(err,result){
+      //   if(err){
+      //     console.log("Password Matching Error")
+      //     return;
+      //   }
 
-      bcrypt.compare(passkey,user.password,async function(err,result){
-        if(err){
-          console.log("Password Matching Error")
-          return;
-        }
-
-        if(result)
-        {
-         await User.deleteOne({_id:user.id},{email : user.email});
-         res.clearCookie('access_token');
-         return res.status(201).json("User Deleted Successfully!");
-        } 
-        else {
-          return next(maerr(401,'Wrong Credentials'));
-        }
-      })
+      //   if(result)
+      //   {
+      await User.findOneAndDelete({email : req.body.email});
+      res.clearCookie('access_token');
+      return res.status(201).json("User Deleted Successfully!");
+      //   else {
+      //     return next(maerr(401,'Wrong Credentials'));
+      //   }
+      // })
+      // if(localStorage.getItem(tokenkey)){
+      //   localStorage.removeItem(tokenkey);
+      //   console.log('JWT Deleted Succssfully');
+      // } else{
+      //   console.log('NO JWT Found');
+      // }
    } catch(error){
     next(error);
    }
