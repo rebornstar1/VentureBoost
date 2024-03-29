@@ -7,7 +7,7 @@ import {SignOutUser} from "../controllers/authcontroller.js"
 
 const router = express.Router();
 
-router.get('/testuser',Test);
+router.get('/test',Test);
 router.put('/updateuser',Updateuser);
 router.delete('/deleteuser',Deleteuser);
 router.post('/signout',SignOutUser);

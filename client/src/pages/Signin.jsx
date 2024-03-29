@@ -24,7 +24,7 @@ function Signin() {
     e.preventDefault();
     try {
     dispatch(signInStart());
-    const res = await fetch('/api/auth/signin',
+    const res = await fetch('http://localhost:3000/api/auth/signin',
     {
     method: 'POST',
     headers : {

@@ -54,7 +54,7 @@ function Profile() {
     e.preventDefault();
     try{
       Dispatch(signOutStart());
-      const res = await fetch('/api/user/signout',
+      const res = await fetch('http://localhost:3000/api/user/signout',
       {
         method: 'POST',
         headers : {
@@ -80,7 +80,7 @@ function Profile() {
     console.log("This is the "+ JSON.stringify(UserDetails));
     try{
       Dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/deleteuser`,
+      const res = await fetch(`http://localhost:3000/api/user/deleteuser`,
       {
         method: 'DELETE',
         headers : {
@@ -109,7 +109,7 @@ function Profile() {
      const UserDetails = {username:formData.username||currentUser.username,email:formData.email||currentUser.email,...formData}
      try{
       Dispatch(updateUserStart());
-        const res = await fetch('/api/user/updateuser',
+        const res = await fetch('http://localhost:3000/api/user/updateuser',
         {
         method: 'PUT',
         headers : {

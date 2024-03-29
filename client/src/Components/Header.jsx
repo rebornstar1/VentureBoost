@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 export default function Header() {
   const {currentUser} = useSelector(state => state.user)
-  console.log(currentUser)
+ // console.log(currentUser)
   return (
     <header className="bg-gradient-to-r from-gray-900 to-gray-600 shadow-md font-montserrat">
         <div className="flex justify-between items-start">
