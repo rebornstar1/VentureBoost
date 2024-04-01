@@ -52,7 +52,22 @@ router.use('/a',express.static('/b'));
 router.use(express.static(__dirname + '/public'));
 router.use('/uploads', express.static('uploads'));
 
-router.post("/image", upload.single("projectlogo"),async (req, res) => {
+router.post("/image", upload.single("Projectlogo"),async (req, res) => {
+  try {
+    console.log(req.file);
+    // await sharp(req.file.buffer)
+    //   .resize({ width: 250, height: 250 })
+    //   .png()
+    //   .toFile(`__dirname + /images/${req.file.originalname}`);
+    const val = await uploadCloudinary(req.file.path)
+    res.status(201).json(val);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+});
+
+router.post("/video",upload.single("VideoPitch"),async(req,res) => {
   try {
     console.log(req.file);
     // await sharp(req.file.buffer)

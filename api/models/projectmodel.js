@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const projectSchema = new mongoose.Schema({
+const ProjectSchema = new mongoose.Schema({
     ProjectName: {
         type: String,
         required:true,
@@ -8,7 +8,6 @@ const projectSchema = new mongoose.Schema({
     },
     ProjectLogo: {
         type: String,
-        default: "https://media.licdn.com/dms/image/D4D03AQFuZvu4mTnTYg/profile-displayphoto-shrink_800_800/0/1700451059256?e=2147483647&v=beta&t=IqH8rLtKhk5Oz0DU-2CasSzGXY90SMZokZ_4jK9a8Hw"
     },
     OfficialMail: {
         type: String,
@@ -38,20 +37,19 @@ const projectSchema = new mongoose.Schema({
     },
     VideoPitch: {
         type: String,
-        required: true,
+       required: true,
     },
     DescribeinWords: {
         type : String,
-        maxlength : Number(500),
+        maxlength : 500,
     },
     Password: {
         type: String,
         required:true,
         unique:true,
-        minlength: Number(8),
+        minlength: 8,
     },
 },{timestamps : true});
 
-const Project = mongoose.model('Project',projectSchema);
-
+const Project = mongoose.model('Project',ProjectSchema);
 export default Project;

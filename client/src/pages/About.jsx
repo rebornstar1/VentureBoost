@@ -3,28 +3,64 @@ import { useEffect } from 'react';
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
-    projectName: '',
-    projectLogo: '',
-    email: '',
-    valuation: '',
+    ProjectName: '',
+    ProjectLogo: '',
+    OfficialMail: '',
+    Valuation: '',
     last1stYear : '',
     last2ndYear : '',
     last3rdYear : '',
-    majorEquityHolders: '',
-    uniqueSellingPropositions: '',
-    videoPitch: '',
-    description: '',
-    password: ''
+    MajorEquityHolders: '',
+    UniqueSellingProposition: '',
+    VideoPitch: '',
+    DescribeinWords: '',
+    Password: ''
   });
 
-  const [file,setfile] = useState(null);
+  function createStateObject() {
+    const values = new Set();
+  
+    function addValue(value) {
+      values.add(value);
+    }
+  
+    function removeValue(value) {
+      values.delete(value);
+    }
+  
+    function getState() {
+      return Array.from(values);
+    }
+  
+    return {
+      addValue,
+      removeValue,
+      getState
+    };
+  }
+
+  const [imagefile,setimagefile] = useState(null);
+  const [videofile,setvideofile] = useState(null);
+  var check = 'projectlogo';
 
   const [stakeholders, setStakeholders] = useState([]);
   const [newStakeholder, setNewStakeholder] = useState('');
 
-  const handleProjectSubmit = (e) => {
+  const handleProjectSubmit = async(e) => {
     e.preventDefault();
-    console.log("Successfull Test Submission of the Project")
+    try{
+      const res = await fetch('http://localhost:3000/api/projects/submit',
+      {
+        method: 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(formData)
+      })
+      const data = await res.json();
+    } catch(error){
+      console.log(error);
+    }
   }
 
   const handleProjectChange = (e) => {
@@ -46,29 +82,50 @@ const ProjectForm = () => {
 
   const handleAddStakeholder = () => {
     if (newStakeholder.trim() !== '') {
+      const val = [...stakeholders, newStakeholder];
+      console.log(val);
       setStakeholders([...stakeholders, newStakeholder]);
       setNewStakeholder('');
+      setFormData({
+        ...formData, MajorEquityHolders : val
+      });
     }
+    //console.log(stakeholders);
   };
 
   const handleRemoveStakeholder = (index) => {
     const updatedStakeholders = stakeholders.filter((_, i) => i !== index);
     setStakeholders(updatedStakeholders);
+    console.log(updatedStakeholders);
+    setFormData({
+      ...formData, MajorEquityHolders : updatedStakeholders
+    });
   };
 
-  useEffect(()=> {
-    if(file)
+  useEffect(()=>{
+    if(videofile)
     {
-      handleFileUpload(file);
+      handleVideoFileUpload(videofile);
     }
-  },[file]);
+  },[videofile])
 
+  useEffect(()=> {
+    if(imagefile)
+    {
+      handleFileUpload(imagefile);
+      // if(checkFileType(file.path) === 'image'){
+      //   handleFileUpload(file);
+      // } else{
+      //   handleVideoFileUpload(file);
+      // }
+    }
+  },[imagefile]);
 
-  const handleFileUpload = async (file) => {
-    console.log(file);
+  const handleFileUpload = async (imagefile) => {
+   // console.log(file);
     try {
       const formval = new FormData();
-      formval.append('projectlogo', file);
+      formval.append('Projectlogo', imagefile);
       //console.log(formval);
         const res = await fetch('http://localhost:3000/api/uploads/image', {
             method: 'POST',
@@ -79,12 +136,35 @@ const ProjectForm = () => {
         console.log(data);
         if(data.url){
           setFormData({
-            ...formData, projectLogo : data.url,
+            ...formData, ProjectLogo : data.url,
           })
         }
     } catch (error) {
         console.log(error);
     }
+}
+
+const handleVideoFileUpload = async (videofile) => {
+  //console.log(file);
+  try {
+    const formval = new FormData();
+    formval.append('VideoPitch', videofile);
+    //console.log(formval);
+      const res = await fetch('http://localhost:3000/api/uploads/video', {
+          method: 'POST',
+          body: formval, 
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if(data.url){
+        setFormData({
+          ...formData, VideoPitch : data.url,
+        })
+      }
+  } catch (error) {
+      console.log(error);
+  }
 }
 
 
@@ -97,19 +177,19 @@ const ProjectForm = () => {
       <form className='flex justify-center flex-col flex-wrap gap-2 md:gap-5 w-11/12 md:w-1/2 mx-auto p-2 md:p-10' onSubmit={handleProjectSubmit} encType='multipart/form-data'>
             <div className='flex flex-col gap-1'>
                 <div className='text-white'>Project Name</div>
-                <input className='rounded-md p-1' placeholder='Project Name' id='projectName' onChange={handleProjectChange}></input>
+                <input className='rounded-md p-1' placeholder='Project Name' id='ProjectName' name='ProjectName' onChange={handleProjectChange}></input>
             </div>
             <div className="mb-4 col-span-3">
               <label className="block mb-1 text-white">Project Logo</label>
-              <input type="file" accept="image/jpeg" name="projectlogo" onChange={(e) => setfile(e.target.files[0])} className="w-full p-1 border rounded-md text-white" />
+              <input type="file" accept="image/*" id="Projectlogo" name="Projectlogo" onChange={(e) => setimagefile(e.target.files[0])} className="w-full p-1 border rounded-md text-white" />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='text-white'>Email Address</div>
-                <input type="email" id="email" name="email" className='rounded-md p-1' onChange={handleProjectChange} placeholder='Email ID'></input>
+                <input type="email" id="OfficialMail" name="OfficialMail" className='rounded-md p-1' onChange={handleProjectChange} placeholder='Email ID'></input>
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='text-white'>Valuation <span className='opacity-40'>{`(Indian Rupees)`}</span></div>
-                <input type="number" id="valuation" name="valuation" className='rounded-md p-1' onChange={handleProjectChange} placeholder='Minimum 100000 Valuation' min="100000"></input>
+                <input type="number" id="Valuation" name="Valuation" className='rounded-md p-1' onChange={handleProjectChange} placeholder='Minimum 100000 Valuation' min="100000"></input>
             </div>
 
             <div>
@@ -133,7 +213,7 @@ const ProjectForm = () => {
 
             <div className='text-white'>List Your Major Stakeholders</div>
                   <div className="w-full max-w-md">
-                    <div className="flex items-center border-b border-b-2 border-gray-500 py-2">
+                    <div className="flex items-center border-b-2 border-gray-500 py-2">
                       <input
                         className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                         type="text"
@@ -170,11 +250,14 @@ const ProjectForm = () => {
               className="resize-none border rounded-md mt-2 focus:outline-none focus:ring focus:border-blue-300 w-full py-2 px-3 text-gray-700 leading-normal"
               rows={4} // Initial height of 4 rows
               placeholder="Enter your text here..."
+              name="UniqueSellingProposition"
+              id="UniqueSellingProposition"
+              onChange={handleProjectChange}
             ></textarea>
 
-            <div className='flex flex-col gap-1 mt-2 mb-2'>
-                <div className='text-white'>Video Pitch Link</div>
-                <input className='rounded-md p-1' placeholder='Please Upload Video on Youtube First and then Attach Link'></input>
+            <div className="mb-4 col-span-3">
+              <label className="block mb-1 text-white">Video Pitch</label>
+              <input type="file" accept="video/*" name="VideoPitch" id="VideoPitch" onChange={(e) => setvideofile(e.target.files[0])} className="w-full p-1 border rounded-md text-white" />
             </div>
 
             <div className='text-white mt-4'>Describe Your Vision</div>    
@@ -182,20 +265,24 @@ const ProjectForm = () => {
               className="resize-none border rounded-md mt-2 focus:outline-none focus:ring focus:border-blue-300 w-full py-2 px-3 text-gray-700 leading-normal"
               rows={4} // Initial height of 4 rows
               placeholder="Enter your text here..."
+              name="DescribeinWords"
+              id="DescribeinWords"
+              onChange={
+              handleProjectChange
+              }
             ></textarea>
 
             <div className='flex flex-row flex-wrap justify-left gap-2 md:gap-9'>
               <div>
                 <div className='text-white mt-4 flex flex-col'>Password <span className='text-sm opacity-50'>(Must be Atleast 8 Characters)</span></div>    
-                <input type="text" name="password" id="password" placeholder="Password" className="bg-white border p-2 rounded-lg mt-2"></input>
+                <input type="password" name="Password" id="Password" placeholder="Password" onChange={handleProjectChange} className="bg-white border p-2 rounded-lg mt-2"></input>
               </div> 
               <div>
                 <div className='text-white mt-4 flex flex-col'>Confirm Password <span className='text-sm opacity-50'>(Must be Same as Password)</span></div>    
-                <input type="text" name="password" id="password" placeholder="Password" className="bg-white border p-2 rounded-lg mt-2"></input>
+                <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Password" className="bg-white border p-2 rounded-lg mt-2"></input>
               </div> 
             </div>
-
-           <button type="submit" className="flex w-1/3 justify-center rounded-md mt-6 md:mt-8 bg-gradient-to-r from-indigo-600 to-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+           <button type="submit" className="flex w-1/3 justify-center rounded-md mt-6 md:mt-8 bg-gradient-to-r from-indigo-600 to-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
         
         </div>
       </form>

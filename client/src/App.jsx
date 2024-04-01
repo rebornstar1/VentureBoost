@@ -10,6 +10,7 @@ import Models from './pages/models'
 import Signup from './pages/Signup'
 import Privateroute from './Components/Privateroute'
 import Update from './pages/Update'
+import VideoPlayer from './pages/VideoPlayer'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path='/signin' element={<Signin/>}/>
       <Route path='/signout' element={<Signout/>}/>
       <Route path='/signup' element={<Signup/>}/>
+      <Route path='/VideoPlayer' element={<VideoPlayer/>}/>
       <Route path='/profile' element={<Privateroute/>}>
          <Route path='/profile' element={<Profile/>}/>
       </Route>
