@@ -27,10 +27,10 @@ const Footer = () => {
   ];
   // JSX structure of the footer
   return (
-    <div className='bg-gray-800 mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 p-6 md:p-20 font-montserrat'>
+    <div className='bg-gray-950 mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-white p-6 md:p-20 font-montserrat'>
       {/* Left section with brand and social icons */}
       <div>
-        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-400'>Ideafest</h1>
+        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-white'>Ideafest</h1>
         <p className='py-4'>
         Spark connections and ignite innovation with our business idea sharing app, where entrepreneurs collide in a digital marketplace of creativity and collaboration.
         </p>
@@ -49,7 +49,7 @@ const Footer = () => {
         {items.map((item, index) => (
           item.type === 'section' ? (
             <div key={index}>
-              <h6 className="font-medium text-gray-100 text-xl">{item.title}</h6>
+              <h6 className="font-medium text-white text-xl">{item.title}</h6>
               <ul>
                 {/* Mapping over items in each section */}
                 {item.items.map((subItem, subIndex) => (
