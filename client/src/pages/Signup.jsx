@@ -47,22 +47,22 @@ function Signup(){
     }
 
     return(
-      <div className="flex min-h-full bg-gradient-to-r from-gray-900 to-gray-600 flex-col justify-center px-3 py-6 lg:px-8 font-montserrat">
+      <div className="flex min-h-full bg-white flex-col justify-center px-3 py-6 lg:px-8 font-montserrat">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Create Your Account</h2>
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-800">Create Your Account</h2>
       </div>
       {error?<p id='checkunique' className="text-red-800 font-semibold text-center">Username or Email ID Already Exists</p>:<p></p>}
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-3" onSubmit={handleSubmit}>
         <div>
-            <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">Username</label>
+            <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-600">Username</label>
             <div className="mt-2">
               <input id="username" onChange={handleChange} name="username" type="text" autoComplete="text" placeholder="Username" className="bg-gray-800 block w-full rounded-md border-0 py-1.5 p-2 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email address</label>
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-600">Email address</label>
             <div className="mt-2">
               <input id="email" onChange={handleChange} name="email" type="email" autoComplete="email" required placeholder="Email" className="bg-gray-800 block w-full rounded-md border-0 p-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
             </div>
@@ -70,7 +70,7 @@ function Signup(){
     
           <div className="pb-4"> 
             <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-600">Password</label>
             </div>
             <div className="mt-2">
               <input id="password" onChange={handleChange} name="password" type="password" autoComplete="current-password" placeholder="Password" required className="bg-gray-800 block w-full p-2 rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>

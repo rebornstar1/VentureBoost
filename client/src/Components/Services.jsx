@@ -31,9 +31,9 @@ function Services() {
 },[])
 
   return (
-    <div className='pt-10 sm:mt-15 sm:pt-10'>
-      <div className='text-gray-950 text-3xl md:text-5xl font-semibold p-2 sm:p-3 text-center'>See What we can <span className='text-orange-600'>do</span> for <span className='text-orange-600'>you</span></div>
-      <div className='flex flex-row flex-wrap justify-around mx-auto' ref={myRef}>
+    <div className='pt-10 sm:mt-15 sm:pt-28 pb-10 sm:pb-20'>
+      <div className='text-gray-950 text-3xl md:text-5xl font-semibold p-5 sm:p-10 text-center'>See What we can <span className='text-orange-600'>do</span> for <span className='text-orange-600'>you</span></div>
+      <div className='flex flex-row flex-wrap justify-around mx-auto sm:p-15' ref={myRef}>
             <Servicecard title={"Buisness Planning"} textin={`Provides comprehensive support in financial investments, offering a suite of services tailored to our customers' needs. Through personalized 
             consultations with our expert financial advisors, clients gain valuable insights and guidance to make informed decisions. Our robust platform 
             integrates cutting-edge technology, granting access to real-time market data and advanced trading tools. We prioritize regulatory compliance 

@@ -29,6 +29,8 @@
     "react-redux": "^9.0.0-rc.0",
     "react-router-dom": "^6.22.0",
     "sharp": "^0.33.3",
+    "stripe": "^14.24.0",
+    "uuid": "^9.0.1",
     "video-react": "^0.16.0"
   }
 }

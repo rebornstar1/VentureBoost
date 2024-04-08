@@ -48,7 +48,7 @@ function Signin() {
     }
   
   return (
-    <div className='flex flex-col bg-gradient-to-r pb-20 from-gray-900 to-gray-600 font-montserrat'>
+    <div className='flex flex-col bg-gradient-to-r pb-20  font-montserrat'>
       <div className="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8">
     <h2 className="mt-4 mb-2 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to your account</h2>
     {error?<p className="text-center text-red-800">{error}</p>:<p></p>}

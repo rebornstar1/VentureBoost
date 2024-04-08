@@ -2,6 +2,7 @@ import Hero from "../Components/Hero";
 import Wwedo from "../Components/Wwedo";
 import Services from "../Components/Services";
 import 'animate.css'
+import HomeStats from "../Components/HomeStats";
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       <Hero/>
       <Wwedo/>
       <Services/>
+      <HomeStats/>
     </div>
   )
 }

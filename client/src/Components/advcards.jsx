@@ -1,22 +1,32 @@
 import { Link } from "react-router-dom"
+import ssc from "../assets/image.png"
 
 function Advcards(props) {
   return (
-    <div className="bg-gradient-to-r from-gray-600 to-gray-400 rounded-xl font-montserrat">
-      <div className="w-80 h-96 rounded overflow-hidden shadow-lg">
-        <img className="w-80 h-48" src={props.ProjectLogo} alt="Sunset in the mountains"/>
-        <div className="px-6 py-4 w-80 h-36 text-center">
-          <div className="font-bold text-xl mb-1 text-gray-300 text-center">{props.ProjectName}</div>
-          <p className="text-center text-md text-gray-300 line-clamp-3">
-            {
-            props.ProjectDescribe
-            }
-          </p>
-        </div>
-        <div className="text-center text-xl font-semibold bg-white p-2 rounded-lg relative top-1">
-          <Link to={`/videoplayer/${props.id}`} className="text-blue-500 hover:text-blue-700 ">Explore it</Link>
-        </div>
-        </div>
+    <div className="flex flex-col w-80 shadow-xl rounded-xl font-montserrat">
+      <div>
+       <img src={props.ProjectLogo} alt="There must be some server issue" className="w-96 h-48 rounded-t-xl"/>
+      </div>
+      <div className="bg-white rounded-xl">
+          <div className="font-semibold text-center text-2xl pt-2 sm:pt-3">{props.ProjectName}</div>
+          <div className="text-gray-400 sm:mt-1">Rating : {props.Rated}</div>
+          <div className="text-sm mx-6 my-2 line-clamp-6">{props.ProjectDescribe}</div>
+          <hr className="mx-3 "></hr>
+          <div className="text-sm flex flex-row justify-between mx-6 my-3">
+             <div className="flex flex-col">
+                 <div>Valuation</div>
+                 <div>{props.Valuation}</div>
+             </div>
+             <div className="flex flex-col">
+                 <div>Funding</div>
+                 <div>{props.Valuation}</div>
+             </div>
+             <div className="flex flex-col">
+                 <div>Sales</div>
+                 <div>{props.Valuation}</div>
+             </div>
+          </div>
+      </div>
     </div>
       )
 }

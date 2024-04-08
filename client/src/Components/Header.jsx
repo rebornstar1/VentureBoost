@@ -9,7 +9,7 @@ export default function Header() {
     <header className="bg-white shadow-md font-montserrat">
         <div className="flex justify-between">
           <div className="font-bold text-3xl md:text-6xl flex flex-wrap">
-              <img className="max-w-20 md:max-w-36" src={Logo} alt="This is logo"></img>
+              <img className="max-w-16 md:max-w-24" src={Logo} alt="This is logo"></img>
           </div>
               <div className='flex flex-row justify-between text-lg gap-6'>
                 <div className='hidden sm:inline text-gray-900 hover:text-orange-500 rounded-2xl m-3 tracking-widest font-medium pt-6'><Link to='/'>Home</Link></div>
