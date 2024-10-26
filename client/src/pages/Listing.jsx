@@ -2,7 +2,7 @@ import react from 'react'
 import ReactPlayer from 'react-player'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart} from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
-import Analysis from './Analysis'
+import Analysis from './Analysis.jsx'
 import { useState } from 'react'
 
 Chart.register(ArcElement);

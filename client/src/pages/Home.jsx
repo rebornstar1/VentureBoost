@@ -1,8 +1,8 @@
-import Hero from "../Components/Hero";
-import Wwedo from "../Components/Wwedo";
-import Services from "../Components/Services";
+import Hero from "../Components/Hero.jsx";
+import Wwedo from "../Components/Wwedo.jsx";
+import Services from "../Components/Services.jsx";
 import 'animate.css'
-import HomeStats from "../Components/HomeStats";
+import HomeStats from "../Components/HomeStats.jsx";
 
 function Home() {
   return (

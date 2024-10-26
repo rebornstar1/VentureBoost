@@ -1,5 +1,5 @@
 import React from 'react'
-import Servicecard from './Servicecard'
+import Servicecard from './Servicecard.jsx'
 import 'animate.css'
 import {useRef,useState,useEffect} from 'react'
 

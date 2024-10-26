@@ -1,4 +1,4 @@
-import Homecards from './Homecards'
+import Homecards from './Homecards.jsx'
 import safeimg from '../assets/image.png'
 import feep from '../assets/finance1.jpg'
 import jeep from '../assets/finance2.jpg'

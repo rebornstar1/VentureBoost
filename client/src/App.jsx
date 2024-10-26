@@ -1,19 +1,19 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Privateroute from './Components/Privateroute';
+import Header from './Components/Header.jsx';
+import Footer from './Components/Footer.jsx';
+import Privateroute from './Components/Privateroute.jsx';
 
 // Lazy-load pages
-const Home = React.lazy(() => import('./pages/Home'));
-const About = React.lazy(() => import('./pages/About'));
-const Profile = React.lazy(() => import('./pages/Profile'));
-const Signin = React.lazy(() => import('./pages/Signin'));
-const Signout = React.lazy(() => import('./pages/Signout'));
-const Models = React.lazy(() => import('./pages/models'));
-const Signup = React.lazy(() => import('./pages/Signup'));
-const Update = React.lazy(() => import('./pages/Update'));
-const Listing = React.lazy(() => import('./pages/Listing'));
+const Home = React.lazy(() => import('./pages/Home.jsx'));
+const About = React.lazy(() => import('./pages/About.jsx'));
+const Profile = React.lazy(() => import('./pages/Profile.jsx'));
+const Signin = React.lazy(() => import('./pages/Signin.jsx'));
+const Signout = React.lazy(() => import('./pages/Signout.jsx'));
+const Models = React.lazy(() => import('./pages/models.jsx'));
+const Signup = React.lazy(() => import('./pages/Signup.jsx'));
+const Update = React.lazy(() => import('./pages/Update.jsx'));
+const Listing = React.lazy(() => import('./pages/Listing.jsx'));
 
 function App() {
   return (

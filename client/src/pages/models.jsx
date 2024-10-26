@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Advcards from "../Components/Advcards"
+import Advcards from "../Components/Advcards.jsx"
 import { useEffect } from "react";
 import testimage from "../assets/image.png"
 
