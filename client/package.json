@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.1",
     "animate.css": "^4.1.1",
     "animate.css-react": "^1.1.0",
+    "browserslist": "^4.24.2",
     "chart.js": "^4.4.2",
     "client": "file:",
     "dotenv": "^16.4.4",
