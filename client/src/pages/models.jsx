@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Advcards from "../Components/Advcards.jsx"
 import { useEffect } from "react";
-import testimage from "../assets/image.png"
 
 function Models() {
   const [projects, setProjects] = useState([]);
