@@ -20,6 +20,7 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
+      external: ['firebase/storage'],
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
