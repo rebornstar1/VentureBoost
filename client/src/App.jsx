@@ -10,7 +10,7 @@ const About = React.lazy(() => import('./pages/About.jsx'));
 const Profile = React.lazy(() => import('./pages/Profile.jsx'));
 const Signin = React.lazy(() => import('./pages/Signin.jsx'));
 const Signout = React.lazy(() => import('./pages/Signout.jsx'));
-const Models = React.lazy(() => import('./pages/models.jsx'));
+const Models = React.lazy(() => import('./pages/Models.jsx'));
 const Signup = React.lazy(() => import('./pages/Signup.jsx'));
 const Update = React.lazy(() => import('./pages/Update.jsx'));
 const Listing = React.lazy(() => import('./pages/Listing.jsx'));
