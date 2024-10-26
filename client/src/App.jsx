@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Privateroute from './Components/Privateroute';
-import Advcards from './Components/Advcards';
 
 // Lazy-load pages
 const Home = React.lazy(() => import('./pages/Home'));
