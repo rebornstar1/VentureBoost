@@ -1,6 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInSuccess, signOut } from '../redux/userSlice';
+import { 
+  signInSuccess, 
+  signOutSuccess, 
+  signOutStart, 
+  signOutFailure 
+} from '../redux/userSlice';
 
 const AuthContext = createContext();
 
@@ -22,11 +27,11 @@ export const AuthProvider = ({ children }) => {
         if (data.isAuthenticated) {
           dispatch(signInSuccess(data.user));
         } else {
-          dispatch(signOut());
+          dispatch(signOutSuccess());
         }
       } catch (error) {
         console.error('Auth check failed:', error);
-        dispatch(signOut());
+        dispatch(signOutSuccess());
       } finally {
         setLoading(false);
       }
@@ -58,6 +63,7 @@ export const AuthProvider = ({ children }) => {
   // Function to refresh token
   const refreshSession = async () => {
     try {
+      dispatch(signOutStart());
       const res = await fetch('http://localhost:3000/api/auth/refresh-token', {
         credentials: 'include'
       });
@@ -68,12 +74,12 @@ export const AuthProvider = ({ children }) => {
         dispatch(signInSuccess(data));
         return true;
       } else {
-        dispatch(signOut());
+        dispatch(signOutSuccess());
         return false;
       }
     } catch (error) {
       console.error('Token refresh failed:', error);
-      dispatch(signOut());
+      dispatch(signOutFailure(error.message));
       return false;
     }
   };

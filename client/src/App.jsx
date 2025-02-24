@@ -24,9 +24,21 @@ function App() {
       
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/models" element={<Models />} />
+        <Route path="/" element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
+          <Route path="/about" element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          } />
+          <Route path="/models" element={
+            <ProtectedRoute>
+              <Models />
+            </ProtectedRoute>
+          } />
           <Route path="/profile" element={<Privateroute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>

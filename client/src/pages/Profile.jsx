@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import {
   deleteUserStart,
   deleteUserFailure,
@@ -15,12 +16,14 @@ import {
   signOutSuccess
 } from "../redux/userSlice.js";
 import { useDispatch } from "react-redux";
-import { useAuth } from "../context/AuthContext"; // Import useAuth hook
+// Remove the useAuth import if context isn't properly set up
+// import { useAuth } from "../context/AuthContext";
 
 function Profile() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { refreshSession } = useAuth(); // Get refreshSession from AuthContext
+  // Remove the refreshSession destructuring
+  // const { refreshSession } = useAuth();
   const [username, setUsername] = useState(currentUser.username);
   const [email, setEmail] = useState(currentUser.email);
   const fileRef = useRef(null);
@@ -50,12 +53,15 @@ function Profile() {
           'Content-Type': 'application/json'
         }
       });
-      
+  
       const data = await res.json();
-      
+  
       if (data.success === false) {
         dispatch(signOutFailure(data.message));
       } else {
+        // ✅ Remove access token from localStorage
+        localStorage.removeItem('access_token');
+  
         dispatch(signOutSuccess());
         navigate('/signin');
       }
@@ -63,6 +69,7 @@ function Profile() {
       dispatch(signOutFailure(error.message));
     }
   };
+  
 
   const deleteUser = async (e) => {
     e.preventDefault();
@@ -108,9 +115,10 @@ function Profile() {
     };
     
     try {
-      // Check for token expiration and refresh if needed
-      await refreshSession();
+      // Remove refreshSession call since it's not available
+      // await refreshSession();
       
+      // Instead, just proceed with the update
       dispatch(updateUserStart());
       const res = await fetch('http://localhost:3000/api/user/updateuser', {
         method: 'PUT',

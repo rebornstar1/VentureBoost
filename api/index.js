@@ -35,7 +35,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(cors({
-  origin: '*', // Your frontend URL (adjust as needed)
+  origin: 'http://localhost:5173', // Your frontend URL with protocol
   credentials: true
 }));
 app.use(express.json());
