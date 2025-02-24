@@ -3,6 +3,7 @@ import safeimg from '../assets/image.png'
 import feep from '../assets/finance1.jpg'
 import jeep from '../assets/finance2.jpg'
 import { motion } from "framer-motion"
+import React from 'react'
 
 
 function Wwedo() {

@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import Logo from '../assets/ll2-removebg-preview.png'
 import { useSelector } from 'react-redux'
+import React from 'react';
 
 export default function Header() {
   const {currentUser} = useSelector(state => state.user)

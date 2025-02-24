@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Advcards from "../Components/Advcards.jsx"
 import { useEffect } from "react";
+import React from "react";
 
 function Models() {
   const [projects, setProjects] = useState([]);
@@ -31,10 +32,16 @@ function Models() {
       <div className="text-gray-950 text-3xl font-semibold text-center">HOT Trending</div>
           <div className=" gap-8 md:gap-5 flex flex-row flex-wrap text-center p-10 md:p-15 items-center mx-auto justify-center">
           {projects.map(project => (
-            <Advcards id={project.ProjectName} project={project} ProjectName={project.ProjectName} ProjectDescribe={
-              project.DescribeinWords
-              } ProjectLogo={project.ProjectLogo} Valuation={project.Valuation}/>
-          ))}
+              <Advcards 
+                key={project._id || project.ProjectName} // Add this line
+                id={project.ProjectName}
+                project={project}
+                ProjectName={project.ProjectName}
+                ProjectDescribe={project.DescribeinWords}
+                ProjectLogo={project.ProjectLogo}
+                Valuation={project.Valuation}
+              />
+            ))}
       </div>
     </div>
   );

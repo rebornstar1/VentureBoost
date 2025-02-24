@@ -19,6 +19,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000,
+    base : "/",
     rollupOptions: {
       external: ['firebase/storage'],
       output: {

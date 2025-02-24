@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import ssc from "../assets/image.png"
+import React from "react"
 
 function Advcards(props) {
   return (

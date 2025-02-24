@@ -5,7 +5,8 @@ import {
   FaInstagram,
   FaTwitterSquare,
 } from 'react-icons/fa';
-// Reusable SocialIcon component with hover effect
+import React from 'react';
+
 const SocialIcon = ({ icon: Icon }) => (
   <Icon className="social-icon hover:text-blue-300" size={30} />
 );

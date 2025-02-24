@@ -1,14 +1,23 @@
 import express from "express";
-import {Signup} from "../controllers/authcontroller.js"
-import {Signin} from "../controllers/authcontroller.js"
-import { Authgoogle } from "../controllers/authcontroller.js";
-import { Signout } from "../controllers/authcontroller.js";
+import {
+  Signup,
+  Signin,
+  Authgoogle,
+  Signout,
+  refreshToken,
+  checkAuth
+} from "../controllers/authcontroller.js";
 
-const router = express();
+const router = express.Router();
 
-router.post('/signup',Signup);
-router.post('/signin',Signin);
-router.post('/google',Authgoogle);
-router.post('/signout',Signout);
+// Authentication endpoints
+router.post('/signup', Signup);
+router.post('/signin', Signin);
+router.post('/google', Authgoogle);
+router.post('/signout', Signout);
+
+// Session management endpoints
+router.get('/refresh-token', refreshToken);
+router.get('/check-auth', checkAuth);
 
 export default router;
